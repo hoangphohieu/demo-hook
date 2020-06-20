@@ -1,13 +1,22 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Child1 from './child/Child1';
+const MyContext = React.createContext();
+
 function App() {
-  let a = 1;
-  const [Num, setNum] = useState(0);
+  const [Persion, setPersion] = useState({
+    name: 'Dan',
+    age: 100,
+    cool: true
+  });
   return (
     <div className="App">
-      <Child1 item={a} />
-      <button  onClick={()=>setNum(Num+1)}>{Num}</button>
+      <MyContext.Provider value={Persion}>
+        <Child1 />
+
+      </MyContext.Provider>
+
+
     </div>
   );
 }
